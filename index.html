@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>জি.বি.ডি. মাধ্যমিক বিদ্যালয় | G.B.D. High School</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #198754;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --text-muted: #6c757d;
+            --border-color: #e9ecef;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3d8bfd;
+            --secondary-color: #20c997;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #f8f9fa;
+            --text-muted: #adb5bd;
+            --border-color: #2d2d2d;
+            --shadow: 0 4px 6px rgba(0,0,0,0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Sticky Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+            background: none;
+            border: none;
+            color: var(--text-color);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://via.placeholder.com/1200x500') center/cover no-repeat;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-success { background: var(--secondary-color); }
+
+        /* Container & Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Counter Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 4px solid var(--primary-color);
+            box-shadow: var(--shadow);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Teacher Card */
+        .teacher-card {
+            text-align: center;
+        }
+
+        .teacher-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        /* Back to top */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-school"></i> জি.বি.ডি. মাধ্যমিক বিদ্যালয়
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">ইতিহাস</a></li>
+                <li><a href="#headteacher">প্রধান শিক্ষক</a></li>
+                <li><a href="#teachers">শিক্ষকবৃন্দ</a></li>
+                <li><a href="#results">ফলাফল ও তথ্য</a></li>
+                <li><a href="#contact">যোগাযোগ</a></li>
+            </ul>
+            <button class="theme-toggle" id="themeToggle"><i class="fa-solid fa-moon"></i></button>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <h1 data-aos="fade-down">জি.বি.ডি. মাধ্যমিক বিদ্যালয়</h1>
+        <p data-aos="fade-up">G.B.D. High School | স্থাপিত: ১৯৬৯ | EIIN: ১১৪৮৫২</p>
+        <p data-aos="fade-up">গ্রাম: ঘোলা, ইউনিয়ন: বড়বাড়িয়া, উপজেলা: চিতলমারী, জেলা: বাগেরহাট</p>
+        <br>
+        <a href="#contact" class="btn">ভর্তি তথ্য</a>
+        <a href="#about" class="btn btn-success">আরও জানুন</a>
+    </section>
+
+    <!-- Basic Info & History -->
+    <section class="container" id="about">
+        <h2 class="section-title" data-aos="fade-up">বিদ্যালয়ের ইতিহাস ও নামকরণের পটভূমি</h2>
+        <div class="grid">
+            <div class="card" data-aos="fade-right">
+                <h3><i class="fa-solid fa-landmark"></i> ইতিহাস ও নামকরণ</h3>
+                <p style="margin-top: 10px;">
+                    ১৯৬৯ সালে শিক্ষানুরাগী ও স্থানীয় গণ্যমান্য ব্যক্তিবর্গের উদ্যোগে এই অঞ্চলের শিক্ষার আলো ছড়িয়ে দিতে বিদ্যালয়টি প্রতিষ্ঠিত হয়। 
+                </p>
+                <p style="margin-top: 10px;">
+                    পার্শ্ববর্তী তিনটি গ্রাম—<b>ঘোলা (G)</b>, <b>বড়বাড়িয়া (B)</b> এবং <b>দলুয়াগুনি (D)</b>—এর সম্মিলিত প্রচেষ্টা, ভালোবাসা ও সহযোগিতার প্রতীক হিসেবে এই তিনটি গ্রামের নামের প্রথম অক্ষর নিয়ে বিদ্যালয়টির নামকরণ করা হয় <b>"জি.বি.ডি. মাধ্যমিক বিদ্যালয়" (G.B.D. High School)</b>।
+                </p>
+            </div>
+            <div class="card" data-aos="fade-left">
+                <h3><i class="fa-solid fa-circle-info"></i> মৌলিক তথ্যাবলি</h3>
+                <ul style="list-style: none; padding-top: 10px; line-height: 1.8;">
+                    <li><b>প্রতিষ্ঠাকাল:</b> ০১ জানুয়ারি, ১৯৬৯</li>
+                    <li><b>EIIN:</b> 114852</li>
+                    <li><b>শিক্ষা বোর্ড:</b> যশোর (Jessore)</li>
+                    <li><b>এমপিও সুবিধা:</b> হ্যাঁ (MPO Number: 5902081304)</li>
+                    <li><b>শাখা/বিভাগ:</b> বিজ্ঞান, মানবিক, ব্যবসায় শিক্ষা</li>
+                    <li><b>শিক্ষা ব্যবস্থা:</b> সহশিক্ষা (Combined)</li>
+                    <li><b>শিফট:</b> দিন (Day)</li>
+                    <li><b>ব্যবস্থাপনা:</b> ম্যানেজিং কমিটি</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Headteacher Message -->
+    <section class="container" id="headteacher" style="background: var(--border-color); border-radius: 10px;">
+        <h2 class="section-title" data-aos="fade-up">প্রধান শিক্ষকের বার্তা</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); align-items: center;">
+            <div style="text-align: center;" data-aos="zoom-in">
+                <img src="assets/images/kazi_aminur.jpg" alt="প্রধান শিক্ষক" style="width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--primary-color); object-fit: cover;">
+                <h3 style="margin-top: 10px;">কাজী আমিনুর ইসলাম</h3>
+                <p><b>প্রধান শিক্ষক</b></p>
+                <p>জি.বি.ডি. মাধ্যমিক বিদ্যালয়</p>
+            </div>
+            <div data-aos="fade-left">
+                <p><i>"শিক্ষা মানুষকে আলোকিত ও সুনাগরিক হিসেবে গড়ে তোলে। আমাদের জি.বি.ডি. মাধ্যমিক বিদ্যালয় দীর্ঘদিন ধরে এই এলাকার শিক্ষার্থীদের মানসম্মত শিক্ষা প্রদানে প্রতিশ্রুতিবদ্ধ।"</i></p>
+                <div style="margin-top: 20px;">
+                    <a href="tel:01718929936" class="btn"><i class="fa-solid fa-phone"></i> 01718-929936</a>
+                    <a href="https://www.facebook.com/share/1N75RhDHgu/" target="_blank" class="btn btn-success"><i class="fa-brands fa-facebook"></i> ফেসবুক গ্রুপ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section class="container" id="teachers">
+        <h2 class="section-title" data-aos="fade-up">শিক্ষক ও শিক্ষিকাবৃন্দ</h2>
+        <div class="grid">
+            <!-- ১. প্রধান শিক্ষক -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/kazi_aminur.jpg" alt="কাজী আমিনুর ইসলাম" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>কাজী আমিনুর ইসলাম</h4>
+                <p><b>প্রধান শিক্ষক</b></p>
+            </div>
+
+            <!-- ২. সহকারী প্রধান শিক্ষক -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/jagadish_chandra.jpg" alt="জগদীশ চন্দ্র রায়" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>জগদীশ চন্দ্র রায়</h4>
+                <p><b>সহকারী প্রধান শিক্ষক</b></p>
+            </div>
+
+            <!-- ৩. সহকারী শিক্ষক (জীববিজ্ঞান) -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/bikash_chandra.jpg" alt="বিকাশ চন্দ্র বিশ্বাস" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>বিকাশ চন্দ্র বিশ্বাস</h4>
+                <p>সহকারী শিক্ষক (জীববিজ্ঞান)</p>
+            </div>
+
+            <!-- ৪. সহকারী শিক্ষক (ধর্ম) -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/bina_rani.jpg" alt="বীণা রানী টিকাদার" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>বীণা রানী টিকাদার</h4>
+                <p>সহকারী শিক্ষক (ধর্ম)</p>
+            </div>
+
+            <!-- ৫. সহকারী শিক্ষক (কৃষি শিক্ষা) -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/deden_kumar.jpg" alt="দেডেন কুমার ব্রক্ষ্ম" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>দেডেন কুমার ব্রক্ষ্ম</h4>
+                <p>সহকারী শিক্ষক (কৃষি শিক্ষা)</p>
+            </div>
+
+            <!-- ৬. সহকারী শিক্ষক (আইসিটি) -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/dhanapati_mandal.jpg" alt="ধনপতি মন্ডল" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>ধনপতি মন্ডল</h4>
+                <p>সহকারী শিক্ষক (আইসিটি)</p>
+            </div>
+
+            <!-- ৭. সহকারী শিক্ষক (গ্রন্থাগার ও তথ্য বিজ্ঞান) -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/lipu_rani.jpg" alt="লিপু রানী মন্ডল" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>লিপু রানী মন্ডল</h4>
+                <p>সহকারী শিক্ষক (গ্রন্থাগার ও তথ্য বিজ্ঞান)</p>
+            </div>
+
+            <!-- ৮. সহকারী শিক্ষক (গণিত) -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/miltan_das.jpg" alt="মিল্টন দাস" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>মিল্টন দাস</h4>
+                <p>সহকারী শিক্ষক (গণিত)</p>
+            </div>
+
+            <!-- ৯. সহকারী শিক্ষক (ইংরেজি) -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/mir_zakaria.jpg" alt="মীর মোহাম্মদ গোলাম জাকারিয়া" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>মীর মোহাম্মদ গোলাম জাকারিয়া</h4>
+                <p>সহকারী শিক্ষক (ইংরেজি)</p>
+            </div>
+
+            <!-- ১০. সহকারী শিক্ষক (বাংলা) -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/nipa_bala.jpg" alt="নিপা বালা" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>নিপা বালা</h4>
+                <p>সহকারী শিক্ষক (বাংলা)</p>
+            </div>
+
+            <!-- ১১. সহকারী শিক্ষক (ব্যবসায় শিক্ষা) -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/niva_ray.jpg" alt="নিভা রায়" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>নিভা রায়</h4>
+                <p>সহকারী শিক্ষক (ব্যবসায় শিক্ষা)</p>
+            </div>
+
+            <!-- ১২. সহকারী শিক্ষক (সামাজিক বিজ্ঞান) -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/rubel_sarkar.jpg" alt="রুবেল সরকার" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>রুবেল সরকার</h4>
+                <p>সহকারী শিক্ষক (সামাজিক বিজ্ঞান)</p>
+            </div>
+
+            <!-- ১৩. সহকারী শিক্ষক (শারীরিক শিক্ষা) -->
+            <div class="card teacher-card" data-aos="flip-left">
+                <img src="assets/images/tapos_roy.jpg" alt="তাপস রায়" onerror="this.src='https://via.placeholder.com/120'">
+                <h4>তাপস রায়</h4>
+                <p>সহকারী শিক্ষক (শারীরিক শিক্ষা)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics & Infrastructure Section -->
+    <section class="container" id="results">
+        <h2 class="section-title" data-aos="fade-up">অবকাঠামো ও এসএসসি ফলাফল পরিসংখ্যান</h2>
+        <div class="stats-grid">
+            <div class="stat-item" data-aos="zoom-in">
+                <div class="stat-number">১৩০</div>
+                <p>মোট জমি (শতাংশ)</p>
+            </div>
+            <div class="stat-item" data-aos="zoom-in">
+                <div class="stat-number">৫৮</div>
+                <p>খেলার মাঠ (শতাংশ)</p>
+            </div>
+            <div class="stat-item" data-aos="zoom-in">
+                <div class="stat-number">১৬</div>
+                <p>মোট রুম সংখ্যা</p>
+            </div>
+            <div class="stat-item" data-aos="zoom-in">
+                <div class="stat-number">৪,৪৪৫</div>
+                <p>ফ্লোর স্পেস (বর্গফুট)</p>
+            </div>
+            <div class="stat-item" data-aos="zoom-in">
+                <div class="stat-number">৮১.২২%</div>
+                <p>এসএসসি পাসের হার (২০০৯–২০২৫)</p>
+            </div>
+            <div class="stat-item" data-aos="zoom-in">
+                <div class="stat-number">১৫</div>
+                <p>মোট জিপিএ-৫ (GPA 5)</p>
+            </div>
+            <div class="stat-item" data-aos="zoom-in">
+                <div class="stat-number">৫৩২ / ৬৫৫</div>
+                <p>মোট পাস / পরীক্ষার্থী</p>
+            </div>
+            <div class="stat-item" data-aos="zoom-in">
+                <div class="stat-number">১৩:১</div>
+                <p>শিক্ষার্থী-শিক্ষক অনুপাত</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map -->
+    <section class="container" id="contact">
+        <h2 class="section-title" data-aos="fade-up">যোগাযোগ ও অবস্থান</h2>
+        <div class="grid">
+            <div class="card" data-aos="fade-right">
+                <h3><i class="fa-solid fa-location-dot"></i> স্থায়ী ঠিকানা:</h3>
+                <p><b>গ্রাম:</b> ঘোলা (ওয়ার্ড নং ৪)</p>
+                <p><b>ইউনিয়ন:</b> বড়বাড়িয়া</p>
+                <p><b>উপজেলা:</b> চিতলমারী</p>
+                <p><b>জেলা:</b> বাগেরহাট, <b>বিভাগ:</b> খুলনা</p>
+                <br>
+                <p><i class="fa-solid fa-user-tie"></i> <b>প্রধান শিক্ষক:</b> কাজী আমিনুর ইসলাম</p>
+                <p><i class="fa-solid fa-phone"></i> <b>মোবাইল:</b> <a href="tel:01718929936" style="color: var(--primary-color); text-decoration: none;">01718-929936</a></p>
+                <p><i class="fa-brands fa-facebook"></i> <b>ফেসবুক:</b> <a href="https://www.facebook.com/share/1N75RhDHgu/" target="_blank" style="color: var(--primary-color); text-decoration: none;">অফিসিয়াল গ্রুপ / পেজ</a></p>
+            </div>
+            <div class="card" data-aos="fade-left">
+                <h3><i class="fa-solid fa-map-location-dot"></i> গুগল ম্যাপে অবস্থান:</h3>
+                <p style="margin-bottom: 15px;">সরাসরি ম্যাপে নেভিগেশন ও অবস্থান দেখতে নিচের লিংকে ক্লিক করুন:</p>
+                <a href="https://maps.app.goo.gl/KiESbX3BZ9JGtix98" target="_blank" class="btn"><i class="fa-solid fa-map-marked-alt"></i> Google Map-এ দেখুন</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; ২০২৬ জি.বি.ডি. মাধ্যমিক বিদ্যালয় (G.B.D. High School)। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <button id="backToTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Dark Mode Toggle
+        const themeToggleBtn = document.getElementById('themeToggle');
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            if(currentTheme === 'dark') {
+                document.body.removeAttribute('data-theme');
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            } else {
+                document.body.setAttribute('data-theme', 'dark');
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+        });
+
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
